@@ -34,9 +34,9 @@ alert_file.close()
 # New Alert Output if MISP Alert or Error calling the API
 alert_output = {}
 # MISP Server Base URL
-misp_base_url = "https://misp.cloud96.com/attributes/restSearch/"
+misp_base_url = "https://<host>/attributes/restSearch/"
 # MISP Server API AUTH KEY
-misp_api_auth_key = "2uIwrLNOFH0qIR6Jw1n0utmpJoeINnXo8Vh1yk8Q"
+misp_api_auth_key = "<key>"
 # API - HTTP Headers
 misp_apicall_headers = {"Content-Type":"application/json", "Authorization":f"{misp_api_auth_key}", "Accept":"application/json"}
 ## Extract Sysmon for Windows/Sysmon for Linux and Sysmon Event ID

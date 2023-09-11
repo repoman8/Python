@@ -88,7 +88,7 @@ if event_source == 'windows':
         misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
     except ConnectionError:
         alert_output["misp"] = {}
-        alert_output["integration"] = "misp-syscheck"
+        alert_output["integration"] = "misp"
         alert_output["misp"]["error"] = 'Connection Error to MISP API'
         send_event(alert_output, alert["agent"])
     else:
@@ -114,7 +114,7 @@ elif event_source == 'ossec':
                 misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
             except ConnectionError:
                 alert_output["misp"] = {}
-                alert_output["integration"] = "misp-syscheck"
+                alert_output["integration"] = "misp"
                 alert_output["misp"]["error"] = 'Connection Error to MISP API'
                 send_event(alert_output, alert["agent"])
             else:
@@ -144,7 +144,7 @@ elif event_source == 'ossec':
                 misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
             except ConnectionError:
                 alert_output["misp"] = {}
-                alert_output["integration"] = "misp-syscheck"
+                alert_output["integration"] = "misp"
                 alert_output["misp"]["error"] = 'Connection Error to MISP API'
                 send_event(alert_output, alert["agent"])
             else:
@@ -174,7 +174,7 @@ elif event_source == 'ossec':
                 misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
             except ConnectionError:
                 alert_output["misp"] = {}
-                alert_output["integration"] = "misp-syscheck"
+                alert_output["integration"] = "misp"
                 alert_output["misp"]["error"] = 'Connection Error to MISP API'
                 send_event(alert_output, alert["agent"])
             else:
@@ -204,7 +204,7 @@ elif event_source == 'ossec':
                 misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
             except ConnectionError:
                 alert_output["misp"] = {}
-                alert_output["integration"] = "misp-syscheck"
+                alert_output["integration"] = "misp"
                 alert_output["misp"]["error"] = 'Connection Error to MISP API'
                 send_event(alert_output, alert["agent"])
             else:
@@ -234,7 +234,7 @@ elif event_source == 'ossec':
                 misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
             except ConnectionError:
                 alert_output["misp"] = {}
-                alert_output["integration"] = "misp-syscheck"
+                alert_output["integration"] = "misp"
                 alert_output["misp"]["error"] = 'Connection Error to MISP API'
                 send_event(alert_output, alert["agent"])
             else:
@@ -264,7 +264,7 @@ elif event_source == 'ossec':
                 misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=False)
             except ConnectionError:
                 alert_output["misp"] = {}
-                alert_output["integration"] = "misp-syscheck"
+                alert_output["integration"] = "misp"
                 alert_output["misp"]["error"] = 'Connection Error to MISP API'
                 send_event(alert_output, alert["agent"])
             else:
@@ -295,7 +295,7 @@ elif event_source == 'syscheck':
         misp_api_response = requests.get(misp_search_url, headers=misp_apicall_headers, verify=false)
     except ConnectionError:
         alert_output["misp"] = {}
-        alert_output["integration"] = "misp-syscheck"
+        alert_output["integration"] = "misp"
         alert_output["misp"]["error"] = 'Connection Error to MISP API'
         send_event(alert_output, alert["agent"])
     else:

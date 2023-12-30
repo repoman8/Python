@@ -44,40 +44,57 @@ event_source = alert["rule"]["groups"][0]
 event_type = alert["rule"]["groups"][2]
 ## Regex Pattern used based on SHA256 lenght (64 characters)
 regex_file_hash = re.compile('\w{64}')
+## Regex Pattern used based on MD5 length (32 characters)
+regex_md5_hash = re.compile('[0-9a-fA-F]{32}')
+
 if event_source == 'windows':
     if event_type == 'sysmon_event1':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
             sys.exit()
     elif event_type == 'sysmon_event6':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
             sys.exit()
     elif event_type == 'sysmon_event7':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
             sys.exit()
     elif event_type == 'sysmon_event_15':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
             sys.exit()
     elif event_type == 'sysmon_event_23':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
             sys.exit()
     elif event_type == 'sysmon_event_24':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
             sys.exit()
     elif event_type == 'sysmon_event_25':
         try:
             wazuh_event_param = regex_file_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
+        except IndexError:
+            wazuh_event_param = regex_md5_hash.search(alert["data"]["win"]["eventdata"]["hashes"]).group(0)
         except IndexError:
             sys.exit()
     else:
@@ -287,6 +304,10 @@ elif event_source == 'ossec':
 elif event_source == 'syscheck':
     try:
         wazuh_event_param = alert["syscheck"]["sha256_after"]
+    except IndexError:
+        wazuh_event_param = alert["syscheck"]["md5_after"]
+    except IndexError:
+        wazuh_event_param = alert["syscheck"]["sha1_after"]
     except IndexError:
         sys.exit()
     misp_search_value = "value:"f"{wazuh_event_param}"
